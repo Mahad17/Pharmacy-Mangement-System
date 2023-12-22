@@ -1,0 +1,137 @@
+<!doctype html>
+<html >
+ 
+<head>
+	    <link rel="icon" href="assets/images/pharmacy32.png" >
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    
+    <title>Update Vendor </title>
+</head>
+
+<body background="#EFEFF6">
+<!-- ============================================================== -->
+                    <div class="row">
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                            <div class="page-header">
+
+                                <h2 class="pageheader-title text-center"> Update Vendor </h2>
+                                <!-- <p class="pageheader-text">Nulla euismod urna eros, sit amet scelerisque torton lectus vel mauris facilisis faucibus at enim quis massa lobortis rutrum.</p> -->
+                                                           </div>
+                        </div>
+                        
+                    </div>
+
+                     <center>
+                        </center>
+                     <div class="container w-50">
+					 <a href="/vendors"><button type="" class="btn btn-primary">Back</button></a>
+<br><br>
+                    <form th:action="@{/updateVendor/{vendorId}(vendorId=${vendors.vendorId})}" th:object="${vendor}" method="post">
+                        <div class="mb-3">
+                          <label for="exampleInputEmail1" class="form-label">Vendor Name</label>
+                          <input type="text" class="form-control" th:value="${vendors.vendorName}" name="vendorName" id="exampleInputEmail1" required aria-describedby="emailHelp">
+                        </div>
+                        <div class="mb-3">
+                          <label for="exampleInputPassword1" class="form-label">Vendor Type</label>
+                          <input type="text" class="form-control" th:value="${vendors.vendorType}" name="vendorType"  id="exampleInputPassword1" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleInputPassword1" class="form-label">Vendor Address</label>
+                            <input type="text"  name="address" th:value="${vendors.address}" class="form-control" id="exampleInputPassword1" required>
+                          </div>
+                          <!-- -->
+                        <div class="mb-3">
+                            <label for="exampleInputPassword1"  class="form-label">Manfacturer Name</label>
+                           <select  aria-placeholder="Manufacturer Name" style="height: 40px;font-weight:700;color: grey;background-color: white;text-decoration: bold;font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;" class="w-100 h-5 form-select" name="manufacturerId" aria-label="Default select example">
+							<option th:each="manufacturers : ${manufacturer}" th:value="${manufacturers.manufacturerId}" th:text="${manufacturers.manufacturerName}"></option>
+							</select>
+							</div>                     
+                            <div class="mb-3">
+                            <label for="exampleInputPassword1" class="form-label">Product Details</label>
+                            <input type="text" class="form-control" th:value="${vendors.productDetails}" name="productDetails"  id="exampleInputPassword1" required>
+                          </div>
+                          <div class="mb-3">
+                            <label for="exampleInputPassword1" class="form-label">payment</label>
+                            <input type="text"   name="payment" th:value="${vendors.payment}" class="form-control" id="exampleInputPassword1" required>
+                          </div>
+                          <div class="mb-3">
+                            <label for="exampleInputPassword1" class="form-label">Business Name</label>
+                            <input type="text"  name="businessName" th:value="${vendors.businessName}" class="form-control" id="exampleInputPassword1" required>
+                          </div>
+                          <div class="mb-3">
+                            <label for="exampleInputPassword1" class="form-label">Business Address</label>
+                            <input type="text"  name="businessAddress" th:value="${vendors.businessAddress}" class="form-control" id="exampleInputPassword1" required>
+                          </div>
+                          <div class="mb-3">
+                            <label for="exampleInputPassword1" class="form-label">Email</label>
+                            <input type="email"  name="email" th:value="${vendors.email}"  class="form-control" id="exampleInputPassword1" required>
+                          </div>
+                          <div class="mb-3">
+                            <label for="exampleInputPassword1" class="form-label">National Tax Number</label>
+                            <input type="text"  name="nationalTaxNumber" th:value="${vendors.nationalTaxNumber}" class="form-control" id="exampleInputPassword1" required>
+                          </div>
+                          <div class="mb-3">
+                            <label for="exampleInputPassword1" class="form-label">Sales Tax Registration Number</label>
+                            <input type="text"  name="salesTaxRegistrationNumber" th:value="${vendors.salesTaxRegistrationNumber}" class="form-control" id="exampleInputPassword1" required>
+                          </div>
+                          <div class="mb-3">
+                            <label for="exampleInputPassword1" class="form-label">Contact Number (starts from +92 or 0)</label>
+                            <input type="text"  name="contactNumber" th:value="${vendors.contactNumber}" class="form-control" id="exampleInputPassword1" required>
+                          </div>
+                          <div class="mb-3">
+                            <label for="exampleInputPassword1" class="form-label">Status (active / non active)</label>
+                            <input type="text"  name="status" th:value="${vendors.status}" class="form-control" id="exampleInputPassword1">
+                          </div>
+                          <div class="mb-3">
+                            <label for="exampleInputPassword1" class="form-label">Registration Date</label>
+                            <input type="date"  name="registrationDate" th:value="${vendors.registrationDate}" class="form-control" id="exampleInputPassword1">
+                          </div>
+                        <div class="mb-3 form-check">
+                          <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                          <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                        </div>
+                        <center><button type="submit" class="btn btn-primary">Submit</button></center>
+                      </form>
+
+</div>
+                    <br>                           
+
+        </div>
+        </div>
+    <script src="assets/vendor/jquery/jquery-3.3.1.min.js"></script>
+    <!-- bootstap bundle js -->
+    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.js"></script>
+    <!-- slimscroll js -->
+    <script src="assets/vendor/slimscroll/jquery.slimscroll.js"></script>
+    <!-- main js -->
+    <script src="assets/libs/js/main-js.js"></script>
+    <!-- chart chartist js -->
+    <script src="assets/vendor/charts/chartist-bundle/chartist.min.js"></script>
+    <!-- sparkline js -->
+    <script src="assets/vendor/charts/sparkline/jquery.sparkline.js"></script>
+    <!-- morris js -->
+    <script src="assets/vendor/charts/morris-bundle/raphael.min.js"></script>
+    <script src="assets/vendor/charts/morris-bundle/morris.js"></script>
+    <!-- chart c3 js -->
+    <script src="assets/vendor/charts/c3charts/c3.min.js"></script>
+    <script src="assets/vendor/charts/c3charts/d3-5.4.0.min.js"></script>
+    <script src="assets/vendor/charts/c3charts/C3chartjs.js"></script>
+    <script src="assets/libs/js/dashboard-ecommerce.js"></script>
+    <link rel="stylesheet" href="assets/vendor/bootstrap/css/bootstrap.min.css">
+    <link href="assets/vendor/fonts/circular-std/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/libs/css/style.css">
+     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+       <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">   
+    <link rel="stylesheet" href="assets/vendor/fonts/fontawesome/css/fontawesome-all.css">
+    <link rel="stylesheet" href="assets/vendor/charts/chartist-bundle/chartist.css">
+    <link rel="stylesheet" href="assets/vendor/charts/morris-bundle/morris.css">
+    <link rel="stylesheet" href="assets/vendor/fonts/material-design-iconic-font/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="assets/vendor/charts/c3charts/c3.css">
+    <link rel="stylesheet" href="assets/vendor/fonts/flag-icon-css/flag-icon.min.css">
+</body>
+ 
+</html>

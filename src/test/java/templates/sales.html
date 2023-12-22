@@ -1,0 +1,488 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+ 
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="assets/vendor/bootstrap/css/bootstrap.min.css">
+    <link href="assets/vendor/fonts/circular-std/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/libs/css/style.css">
+    <link rel="stylesheet" href="assets/vendor/fonts/fontawesome/css/fontawesome-all.css">
+    <link rel="stylesheet" href="assets/vendor/charts/chartist-bundle/chartist.css">
+    <link rel="stylesheet" href="assets/vendor/charts/morris-bundle/morris.css">
+    <link rel="stylesheet" href="assets/vendor/fonts/material-design-iconic-font/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="assets/vendor/charts/c3charts/c3.css">
+    <link rel="stylesheet" href="assets/vendor/fonts/flag-icon-css/flag-icon.min.css">
+    <title>Sales</title>
+</head>
+<style>
+	#dropdownMenuButton{
+		background-color:#0E0C28;
+		color: rgb(113, 116, 147);
+		margin-left: -05px;
+	}
+	td{
+		background-color: white;
+	}
+	datalist > option{
+		background-color: white;
+	}
+
+</style>
+<body>
+    <!-- ============================================================== -->
+    <!-- main wrapper -->
+    <!-- ============================================================== -->
+    <div class="dashboard-main-wrapper">
+        <!-- ============================================================== -->
+        <!-- navbar -->
+        <!-- ============================================================== -->
+        <div class="dashboard-header">
+            <nav class="navbar navbar-expand-lg bg-white fixed-top">
+                <a class="navbar-brand text-dark" href="index.html">My Pharmacy</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse " id="navbarSupportedContent">
+                    <ul class="navbar-nav ml-auto navbar-right-top">
+                        <li class="nav-item">
+                            <div id="custom-search" class="top-search-bar">
+                                <input class="form-control" type="text" placeholder="Search..">
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown notification">
+                            <a class="nav-link nav-icons" href="#" id="navbarDropdownMenuLink1" data-toggle="" aria-haspopup="true" aria-expanded="false"><i class="fas fa-fw fa-bell"></i> <span class="indicator"></span></a>
+                            <ul class="dropdown-menu dropdown-menu-right notification-dropdown">
+                                <li>
+                                    <div class="notification-title"> Notification</div>
+                                    <div class="notification-list">
+                                        <div class="list-group">
+                                            <a href="#" class="list-group-item list-group-item-action active">
+                                                <div class="notification-info">
+                                                    <div class="notification-list-user-img"><img src="assets/images/avatar-2.jpg" alt="" class="user-avatar-md rounded-circle"></div>
+                                                    <div class="notification-list-user-block"><span class="notification-list-user-name">Jeremy Rakestraw</span>accepted your invitation to join the team.
+                                                        <div class="notification-date">2 min ago</div>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                            <a href="#" class="list-group-item list-group-item-action">
+                                                <div class="notification-info">
+                                                    <div class="notification-list-user-img"><img src="assets/images/avatar-3.jpg" alt="" class="user-avatar-md rounded-circle"></div>
+                                                    <div class="notification-list-user-block"><span class="notification-list-user-name">John Abraham </span>is now following you
+                                                        <div class="notification-date">2 days ago</div>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                            <a href="#" class="list-group-item list-group-item-action">
+                                                <div class="notification-info">
+                                                    <div class="notification-list-user-img"><img src="assets/images/avatar-4.jpg" alt="" class="user-avatar-md rounded-circle"></div>
+                                                    <div class="notification-list-user-block"><span class="notification-list-user-name">Monaan Pechi</span> is watching your main repository
+                                                        <div class="notification-date">2 min ago</div>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                            <a href="#" class="list-group-item list-group-item-action">
+                                                <div class="notification-info">
+                                                    <div class="notification-list-user-img"><img src="assets/images/avatar-5.jpg" alt="" class="user-avatar-md rounded-circle"></div>
+                                                    <div class="notification-list-user-block"><span class="notification-list-user-name">Jessica Caruso</span>accepted your invitation to join the team.
+                                                        <div class="notification-date">2 min ago</div>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="list-footer"> <a href="#">View all notifications</a></div>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown connection">
+                            <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="" aria-haspopup="true" aria-expanded="false"> <i class="fas fa-fw fa-th"></i> </a>
+                            <ul class="dropdown-menu dropdown-menu-right connection-dropdown">
+                                <li class="connection-list">
+                                    <div class="row">
+                                        <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 ">
+                                            <a href="#" class="connection-item"><img src="assets/images/github.png" alt="" > <span>Github</span></a>
+                                        </div>
+                                        <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 ">
+                                            <a href="#" class="connection-item"><img src="assets/images/dribbble.png" alt="" > <span>Dribbble</span></a>
+                                        </div>
+                                        <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 ">
+                                            <a href="#" class="connection-item"><img src="assets/images/dropbox.png" alt="" > <span>Dropbox</span></a>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 ">
+                                            <a href="#" class="connection-item"><img src="assets/images/bitbucket.png" alt=""> <span>Bitbucket</span></a>
+                                        </div>
+                                        <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 ">
+                                            <a href="#" class="connection-item"><img src="assets/images/mail_chimp.png" alt="" ><span>Mail chimp</span></a>
+                                        </div>
+                                        <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 ">
+                                            <a href="#" class="connection-item"><img src="assets/images/slack.png" alt="" > <span>Slack</span></a>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="conntection-footer"><a href="#">More</a></div>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown nav-user">
+                            <a class="nav-link nav-user-img" href="#" id="navbarDropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="assets/images/avatar-1.jpg" alt="" class="user-avatar-md rounded-circle"></a>
+                            <div class="dropdown-menu dropdown-menu-right nav-user-dropdown" aria-labelledby="navbarDropdownMenuLink2">
+                                <div class="nav-user-info">
+                                    <h5 class="mb-0 text-white nav-user-name">Pharmacy</h5>
+                                    <span class="status"></span><span class="ml-2">Available</span>
+                                </div>
+                                <a class="dropdown-item" href="#"><i class="fas fa-user mr-2"></i>Account</a>
+                                <a class="dropdown-item" href="#"><i class="fas fa-cog mr-2"></i>Setting</a>
+                                <a class="dropdown-item" href="/"><i class="fas fa-power-off mr-2"></i>Logout</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+        <!-- ============================================================== -->
+        <!-- end navbar -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- left sidebar -->
+        <!-- ============================================================== -->
+        <div class="nav-left-sidebar sidebar-dark">
+            <div class="menu-list">
+                <nav class="navbar navbar-expand-lg navbar-light">
+                    <a class="d-xl-none d-lg-none" href="#">Dashboard</a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav flex-column">
+                            <li class="nav-divider">
+                                Menu
+                            </li>
+                            <li class="nav-item ">
+                                <a class="nav-link " href="/index" ><i class="fa fa-fw fa-user-circle"></i>Dashboard <span class="badge badge-success">6</span></a>
+                               
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link " href="/vendors" ><i class="fa fa-fw fa-rocket"></i>Vendors</a>
+                               
+                            </li>
+                            <li class="nav-item ">
+                                <a class="nav-link active" href="/sales" ><i class="fab fa-fw fa-wpforms"></i>Sales</a>
+                               
+                            </li><br>
+                            
+                            <div class="dropdown" >
+                                <button class="btn btn-secondary border-0 mr-5  w-100 dropdown-toggle  text-left" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-fw fa-chart-pie text-muted "></i>&nbsp; Report
+                                </button>
+                                <div class="dropdown-menu  w-100 " aria-labelledby="dropdownMenuButton">
+                                    <a class="dropdown-item w-100 " href="/salesReport">Sales Report</a>
+                                </div>
+                            </div>
+                            <li class="nav-item">
+                                <a class="nav-link " href="/medicines" ><i class="fas fa-fw fa-table"></i>Stock</a>
+                               
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/AllCustomer" ><i class="fas fa-fw fa-users"></i>Customers</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/manufacturers" ><i class="fas fa-fw fa-building"></i>Manufacturers</a>
+                            </li>
+                                    </ul>
+                                </div>
+                </nav>    </div>
+
+            </div>
+        </div>
+        <!-- ============================================================== -->
+        <!-- end left sidebar -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- wrapper  -->
+        <!-- ============================================================== -->
+        <div class="dashboard-wrapper">
+            <div class="dashboard-ecommerce">
+                <div class="container-fluid dashboard-content ">
+                    <!-- ============================================================== -->
+                    <!-- pageheader  -->
+                    <!-- ============================================================== -->
+                    <div class="row">
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                            <div class="page-header">
+                                <h2 class="pageheader-title">Sales </h2>
+                                <!-- <p class="pageheader-text">Nulla euismod urna eros, sit amet scelerisque torton lectus vel mauris facilisis faucibus at enim quis massa lobortis rutrum.</p> -->
+                                <div class="page-breadcrumb">
+                                    <nav aria-label="breadcrumb">
+                                        <ol class="breadcrumb">
+                                            <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Sales </a></li>
+                                        </ol>
+                                    </nav>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                                <div class="mb-4"><a href="/salesReport"><button class="btn btn-light mb-2 text-center float-left"><i class="fas fa-angle-left">&nbsp; </i>All Sales</button></a></div><br>
+
+                 <p th:text="${errorMessage}" th:if="${errorMessage}" style="color: red"></p>
+                 <p th:text="${successful}" th:if="${successful}" style="color: rgb(0, 64, 128)"></p>
+
+<form th:action="@{/salesPostAll}" th:object="${sales}"  method="post" >
+<table id="dataTbl" class="table table-bordered text-center small">
+	
+  <thead>
+   <tr>
+      <th>Customer Name</th>
+      <th>Product Name</th>
+      <th>Quantity</th>
+      <th>Price</th>
+      <th>Total Price</th>
+      <th>Payment Method</th>
+       <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr id="row1">
+        <td><input size="10px" id="myInput" autocomplete="off" pattern="[A-Za-z]+" title="Please enter only letters" type="text" name="sales[0].customerName" required></td>
+        <td id="td2"><input id="myInput" autocomplete="off" type="text" list="suggestions" title="Please enter only letters"  name="sales[0].itemName" required>
+        <datalist  id="suggestions">
+        <option id="option" th:each="stock : ${stocks}" th:value="${stock.itemName}" th:text="${stock.itemName +' ('+stock.quantityAvailable+') / Rs='+ stock.unitPrice +'-/-'}"></option>
+        </datalist></td>
+        <td><input size="10px" id="myInput" autocomplete="off" pattern="[0-9]+" title="Please enter only numbers" type="text" name="sales[0].quantitySold" required></td>
+        <td><input size="10px" id="myInput" autocomplete="off" pattern="[0-9]+" title="Please enter only numbers" type="text" name="sales[0].unitPrice" required></td>
+        <td><input size="10px" id="myInput" autocomplete="off" pattern="[0-9]+" title="Please enter only numbers" type="text" name="sales[0].totalPrice" required></td>
+        <td><input size="10px" id="myInput" list="suggestions2" autocomplete="off" pattern="[A-Za-z]+" title="Please enter only numbers" type="text" name="sales[0].paymentMethod" required>
+        <datalist  id="suggestions2">
+        <option value="cash">Cash</option>
+        <option value="account transfer">Account transfer</option>
+        <option value="Later">Later</option>
+        </datalist></td>
+        <td><button class="printBtn btn btn-primary">Print</button>&nbsp;  <button id="deleteBtn" class="deleteBtn btn btn-danger">Delete</button></td>
+    </tr>
+</tbody>
+</table>
+	<small style="text-align: right;">Press "Space" to insert new line</small>
+<br><br>
+
+<center>
+	<a><button  style="text-align: center;" class="btn btn-success text-right" type="submit">Save</button></a>
+</center>
+</form></div>
+<script>
+
+ var inputElement = document.getElementById('myInput');
+  inputElement.addEventListener('input', function() {
+    // Remove leading spaces from the input value
+    var inputValue = inputElement.value;
+    var trimmedValue = inputValue.trimStart();
+    
+    // Set the trimmed value back to the input field
+    inputElement.value = trimmedValue;
+  });
+
+  var inputElement = document.getElementById('myInput');
+  inputElement.addEventListener('blur', function() {
+    // Trim the input value
+    var trimmedValue = inputElement.value.trim();
+    // Set the trimmed value back to the input field
+    inputElement.value = trimmedValue;
+  });
+
+    //for deleting row
+    document.addEventListener('click', function(event) {
+    if (event.target.classList.contains('deleteBtn')) {
+    var row = event.target.parentNode.parentNode;
+    row.remove();
+   }
+   });
+
+   document.addEventListener('keydown', function(event) {
+   if (event.key === 'Delete') {
+    var activeElement = document.activeElement;
+    if (event.target.classList.contains('deleteBtn')) {
+      // Prevent the default behavior of the "Delete" key
+      event.preventDefault();
+
+      var row = activeElement.parentNode.parentNode;
+      row.remove();
+    }
+  }
+  });
+  // get back to previous input 
+  document.addEventListener('keydown', function(event) {
+  if (event.key === 'ArrowLeft') {
+    var currentInput = document.activeElement;
+    var table = currentInput.closest('table');
+    var inputs = table.querySelectorAll('input');
+
+    // Find the current input index
+    var currentIndex = Array.from(inputs).indexOf(currentInput);
+
+    // Get the previous input element
+    var previousInput = inputs[currentIndex - 1];
+
+    if (!previousInput) {
+      var currentRow = currentInput.closest('tr');
+      var previousRow = currentRow.previousElementSibling;
+
+      if (previousRow) {
+        var previousRowInputs = previousRow.querySelectorAll('input');
+        previousInput = previousRowInputs[previousRowInputs.length - 1];
+      }
+    }
+    if (previousInput) {
+      previousInput.focus();
+    }
+    event.preventDefault(); // Prevent the default "ArrowLeft" key behavior
+  }
+});
+
+//get down same column
+document.addEventListener('keydown', function(event) {
+  if (event.key === 'ArrowDown') {
+    var currentInput = document.activeElement;
+    var inputs = document.querySelectorAll('table input');
+    var currentIndex = Array.from(inputs).indexOf(currentInput);
+
+    for (var i = currentIndex + 1; i < inputs.length; i++) {
+      if (inputs[i].offsetTop > currentInput.offsetTop) {
+        inputs[i].focus();
+        event.preventDefault(); // Prevent the default "ArrowDown" key behavior
+        break;
+      }
+    }
+  }
+});
+
+document.addEventListener('keydown', function(event) {
+  if (event.key === 'ArrowUp') {
+    var currentInput = document.activeElement;
+    var inputs = document.querySelectorAll('table input');
+    var currentIndex = Array.from(inputs).indexOf(currentInput);
+
+    for (var i = currentIndex - 1; i >= 0; i--) {
+      if (inputs[i].offsetTop < currentInput.offsetTop) {
+        inputs[i].focus();
+        event.preventDefault(); // Prevent the default "ArrowUp" key behavior
+        break;
+      }
+    }
+  }
+});
+
+//get onto next input
+document.addEventListener('keydown', function(event) {
+  if (event.key === 'ArrowRight') {
+    var currentInput = document.activeElement;
+    var table = currentInput.closest('table');
+    var inputs = table.querySelectorAll('input');
+
+    // Find the current input index
+    var currentIndex = Array.from(inputs).indexOf(currentInput);
+
+    // Get the next input element
+    var nextInput = inputs[currentIndex + 1];
+
+    if (!nextInput) {
+      var currentRow = currentInput.closest('tr');
+      var nextRow = currentRow.nextElementSibling;
+
+      if (nextRow) {
+        var nextRowInputs = nextRow.querySelectorAll('input');
+        nextInput = nextRowInputs[0];
+      }
+    }
+
+    if (nextInput) {
+      nextInput.focus();
+    }
+
+    event.preventDefault(); // Prevent the default "ArrowRight" key behavior
+  }
+});
+
+//for adding new row
+
+var rowIdCounter = 1;
+var salesNumberCounter = 0;
+
+document.addEventListener('keydown', function(event) {
+  if (event.key === ' ') {
+    var currentRow = document.getElementById(`row${rowIdCounter}`);
+    var newRow = currentRow.cloneNode(true);
+
+    // Clear the input fields of the cloned row
+    var inputElements = newRow.querySelectorAll('input');
+    inputElements.forEach(function(inputElement) {
+      inputElement.value = '';
+    });
+
+    // Generate new id and sales number for the cloned row
+    rowIdCounter++;
+    salesNumberCounter++;
+    newRow.id = `row${rowIdCounter}`;
+
+    // Update the name attribute of the cloned row's input elements
+    inputElements.forEach(function(inputElement) {
+      var currentName = inputElement.name;
+      var newName = currentName.replace(/\[.*?\]/, `[${salesNumberCounter}]`);
+      inputElement.name = newName;
+    });
+
+    var table = document.getElementById('dataTbl');
+    table.appendChild(newRow);
+
+    // Focus on the first input field of the newly added row
+    var firstInput = newRow.querySelector('input');
+    if (firstInput) {
+      firstInput.focus();
+    }
+
+    event.preventDefault(); // Prevent the default spacebar key behavior
+  }
+
+  if (event.key === '.') {
+    var currentRow = document.getElementById(`row${rowIdCounter}`);
+    var nextRow = currentRow.nextElementSibling;
+
+    if (nextRow) {
+      var inputField = nextRow.querySelector('input');
+
+      if (inputField) {
+        inputField.focus();
+      }
+    }
+    event.preventDefault(); // Prevent the default dot key behavior
+  }
+});
+
+</script>
+
+    <script src="assets/vendor/jquery/jquery-3.3.1.min.js"></script>
+    <!-- bootstap bundle js -->
+    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.js"></script>
+    <!-- slimscroll js -->
+    <script src="assets/vendor/slimscroll/jquery.slimscroll.js"></script>
+    <!-- main js -->
+    <script src="assets/libs/js/main-js.js"></script>
+    <!-- chart chartist js -->
+    <script src="assets/vendor/charts/chartist-bundle/chartist.min.js"></script>
+    <!-- sparkline js -->
+    <script src="assets/vendor/charts/sparkline/jquery.sparkline.js"></script>
+    <!-- morris js -->
+    <script src="assets/vendor/charts/morris-bundle/raphael.min.js"></script>
+    <script src="assets/vendor/charts/morris-bundle/morris.js"></script>
+    <!-- chart c3 js -->
+    <script src="assets/vendor/charts/c3charts/c3.min.js"></script>
+    <script src="assets/vendor/charts/c3charts/d3-5.4.0.min.js"></script>
+    <script src="assets/vendor/charts/c3charts/C3chartjs.js"></script>
+    <script src="assets/libs/js/dashboard-ecommerce.js"></script>
+    </div></div></body>
+ 
+</html>

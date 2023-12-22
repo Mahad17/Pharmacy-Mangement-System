@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+ 
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="assets/vendor/bootstrap/css/bootstrap.min.css">
+    <link href="assets/vendor/fonts/circular-std/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/libs/css/style.css">
+    <link rel="stylesheet" href="assets/vendor/fonts/fontawesome/css/fontawesome-all.css">
+    <link rel="stylesheet" href="assets/vendor/charts/chartist-bundle/chartist.css">
+    <link rel="stylesheet" href="assets/vendor/charts/morris-bundle/morris.css">
+    <link rel="stylesheet" href="assets/vendor/fonts/material-design-iconic-font/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="assets/vendor/charts/c3charts/c3.css">
+    <link rel="stylesheet" href="assets/vendor/fonts/flag-icon-css/flag-icon.min.css">
+    <title> Sign Up </title>
+
+    <style>
+		.btn-outline-light:hover{
+			color: darkblue !important;
+			background-color: white;	
+		}
+			::placeholder {
+      font-size: 15px; /* Set the desired font size here */
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    }
+    a:hover{
+		color:white !important;
+	}
+	</style>
+
+<head>
+<body>
+<section class="vh-100 gradient-custom">
+  <div class="container py-5 h-100">
+    <div class="row d-flex  justify-content-center align-items-center h-100">
+      <div class="col-12 colS-md-8 col-lg-6 col-xl-5">
+        <div class="card bg-dark text-light" style="border-radius: 1rem;">
+          <div style="background-color: #0E0C28;" class="card-body card-dark p-5 text-center">
+            <div class="mb-md-5 mt-md-4 pb-5">
+
+              <h2 class="fw-bold mb-2 text-uppercase text-light">Sign Up</h2>
+              <p class="text-white-50 mb-5 text-light">Please enter your shop Details to sign Up!</p>
+                <p th:text="${errorMessage}" th:if="${errorMessage}" style="color: red"></p>
+                <p th:text="${Successful}" th:if="${Successful}" style="color: rgb(0, 255, 64)"></p>
+          <div th:if="${#fields.hasErrors('shop.phoneNumber')}">
+        <p th:errors="*{shop.phoneNumber}"></p>
+    </div>
+
+              <form  th:action="@{/signUp}" th:object="${shop}" method="post">
+                            <div class="form-outline form-white mb-3">
+                <input type="text" placeholder="Shop Name" autocomplete="off" name="shopName" id="typeEmailX" required class="form-control form-control-lg" />
+              </div>
+                            <div class="form-outline form-white mb-3">
+                <input type="text" placeholder="Shop Description" autocomplete="off" name="shopDescription" required id="typeEmailX" class="form-control form-control-lg" />
+              </div>
+              
+                            <div class="form-outline form-white mb-3">
+                <input type="text" autocomplete="off" id="phoneNo" pattern="(\\+92|0)[0-9]{10}"  placeholder="Phone Number ( starts with +92 or 0 )" required name="phoneNumber"  class="form-control form-control-lg" />
+              </div>
+
+              <div class="form-outline form-white mb-3">
+                <input type="email" placeholder="Email" name="email" autocomplete="off" id="typeEmailX" required class="form-control form-control-lg" />
+              </div>
+
+              <div class="form-outline form-white mb-3">
+                <input type="password" id="typePasswordX" autocomplete="off" name="password" placeholder="Password" required class="form-control form-control-lg" />
+              </div>
+
+                            <div class="form-outline form-white mb-3">
+                <input type="text" placeholder="Address" autocomplete="off" name="address" id="typeEmailX" required class="form-control form-control-lg" />
+              </div>
+                            <div class="form-outline form-white mb-3"> 
+                <input type="text" placeholder="Registration Number" autocomplete="off" name="registrationNumber" required id="typeEmailX" class="form-control form-control-lg" />
+              </div>
+
+                <div class="mb-5">
+              <button class="btn btn-outline-light text-light btn-lg px-5"  type="submit">Sign Up</button>
+              </div></form>
+            </div>
+            <div>
+              <p style="margin-top: -120px;">Already have an account? <a href="/" class=" text-white-50 fw-bold">Log In</a>
+              </p>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+              
+    <!-- Optional JavaScript -->
+    <!-- jquery 3.3.1 -->
+    <script src="assets/vendor/jquery/jquery-3.3.1.min.js"></script>
+    <!-- bootstap bundle js -->
+    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.js"></script>
+    <!-- slimscroll js -->
+    <script src="assets/vendor/slimscroll/jquery.slimscroll.js"></script>
+    <!-- main js -->
+    <script src="assets/libs/js/main-js.js"></script>
+    <!-- chart chartist js -->
+    <script src="assets/vendor/charts/chartist-bundle/chartist.min.js"></script>
+    <!-- sparkline js -->
+    <script src="assets/vendor/charts/sparkline/jquery.sparkline.js"></script>
+    <!-- morris js -->
+    <script src="assets/vendor/charts/morris-bundle/raphael.min.js"></script>
+    <script src="assets/vendor/charts/morris-bundle/morris.js"></script>
+    <!-- chart c3 js -->
+    <script src="assets/vendor/charts/c3charts/c3.min.js"></script>
+    <script src="assets/vendor/charts/c3charts/d3-5.4.0.min.js"></script>
+    <script src="assets/vendor/charts/c3charts/C3chartjs.js"></script>
+    <script src="assets/libs/js/dashboard-ecommerce.js"></script>
+</body>
+ 
+</html>
